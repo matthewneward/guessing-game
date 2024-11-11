@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="matthew neward">
+    <title>guessing game.</title>
+</head>
+<body>
+    <div>
+        <!-- not part of the required output but the document.getelementbyid needs to have something or else it gets an error -->
+        <p id="randomNumber"></p>
+    </div>
+
+    <div>
+        <script>
+            //set up for the random number generation, and variable definition
+             randomNumber = Math.floor(Math.random() * 10) +1;
+            //I guess this bit is necessary? it doesn't match the output that you showed but it was listed as necessary so I'm including it. 
+            document.getElementById("randomNumber").innerHTML = randomNumber;
+            console.log(randomNumber);
+            let guess=null
+            let guessCount=0
+
+        //beginning of loop
+        while (guess!==randomNumber) { 
+            //guess counter
+            guessCount+=1;
+            let guess=prompt(`Guess a number between 1 and 10`);
+            //turning guess into int so it doesn't need to be case sensitive. if I had the player adding any strings then it might need to be case sensitive but they're not
+            guess=parseInt(guess)
+
+            if (guess>randomNumber) { 
+                alert(`Guess was too high, guess again`);
+
+            } else if (guess<randomNumber) {
+                alert(`Guess was too low, guess again`);
+            // still feels weird to purposefully not put a condition in for the else part of the statement. 
+            } else {
+                alert(`You're correct. You guessed it in ` + guessCount + ` guesses!`);
+            }
+
+            if (randomNumber===guess) {
+                break; 
+            } else {}
+        }
+
+        </script>
+
+    </div>
+</body>
+</html>
